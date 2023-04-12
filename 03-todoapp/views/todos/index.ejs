@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<%- include ('../partials/head.ejs') %>
+<html lang="en">
+  <body>
+    <h1>To Do App</h1>
+    <button class="create">New Task</button>
+    <%- include ('../partials/form.ejs') %> <% if (todos.length > 0) { %> <%
+    todos.forEach(todo=> { %>
+    <a class="single" href="/todos/<%=todo._id%>">
+      <h3 class="title"><%= todo.title %></h3>
+      <p class="tag"><%= todo.tag %></p>
+      <p class="completed"><%= todo.completed %></p>
+      <a class="delete"></a>
+    </a>
+    <% }) %> <% } else { %>
+    <p>there are no todos to display...</p>
+    <% } %>
+    <script>
+      const newTask = document.querySelector('button.create')
+      const form = document.querySelector('.create-todo')
+
+      newTask.addEventListener('click', (e) => {
+        e.preventDefault
+        form.removeAttribute('hidden')
+      })
+    </script>
+  </body>
+</html>
