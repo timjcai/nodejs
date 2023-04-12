@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
+const blogRoutes = require('./routes/blogRoutes');
 
 // express app
 const app = express();
@@ -14,23 +14,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 // register view engine
 app.set('view engine', 'ejs');
 
-// listen for requests
-app.get('/add-blog', (req, res) => {
-  const blog = new Blog({
-    title: 'new blog',
-    snippet: 'about my new blog',
-    body: 'more about my new blog'
-  });
+// middleware & static files
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
-  blog.save()
-    .then((result) => {
-      res.send(result)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-})
-
+// basic routes
 app.get('/', (req, res) => {
   // res.send('<p>home page</p>');
   res.render('index', {title: 'Home'});
@@ -41,15 +29,18 @@ app.get('/about', (req, res) => {
   res.render('about', {title: 'About'});
 });
 
-app.get('/blog', (req, res) => {
-  // res.send('<p>about page</p>');
-  res.render('blog', {title: 'Blog'});
-});
+// app.get('/blogs', (req, res) => {
+//   // res.send('<p>about page</p>');
+//   res.render('blog', {title: 'Blog'});
+// });
 
 app.get('/contact', (req, res) => {
   // res.send('<p>contact page</p>');
   res.render('contact-me', {title: 'Contact'});
 });
+
+// blog routes
+app.use('/blogs', blogRoutes);
 
 //  redirects
 app.get('about-us', (req, res) => {
