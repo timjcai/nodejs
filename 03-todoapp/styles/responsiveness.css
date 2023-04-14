@@ -1,0 +1,14 @@
+@media only screen and (max-width: 640px) {
+  section {
+  }
+}
+
+@media only screen and (max-width: 1007px) {
+  section {
+  }
+}
+
+@media only screen and (min-width: 1008px) {
+  section {
+  }
+}
