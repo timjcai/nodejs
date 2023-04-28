@@ -52,20 +52,14 @@
 
 
 var twoSum = function (nums, target) {
-  let answer = [];
-  for (let numsIndex = 0; numsIndex < nums.length; numsIndex++) {
-    const num = nums[numsIndex];
-
-    const complement = target - num;
-    const complementIndex = nums.indexOf(complement);
-    console.log(complementIndex)
+  for (let i = 0; i < nums.length; i++) {
+    const targetNumber = target - nums[i]
+    for (let j = i + 1; j < nums.length; j++){
+      if (nums[j] === targetNumber) {
+        return [i,j]
+      }
+    }
   }
-  //   if (complementIndex > 0) {
-  //     return answer.push([numsIndex, complementIndex]);
-  //   }
-  //   return answer;
-  // }
-  // answer;
 };
 
 
