@@ -24,7 +24,20 @@ const todo_create_post = (req, res) => {
     })
 }
 
+const todo_delete = (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  Todo.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: '/todos' })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 module.exports = {
   todo_index,
   todo_create_post,
+  todo_delete,
 }

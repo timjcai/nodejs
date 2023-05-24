@@ -15,9 +15,7 @@ mongoose
   .catch((err) => console.log(err))
 
 app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-
+app.use(express.static('styles'))
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/', todoRoutes)
