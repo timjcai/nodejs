@@ -22,4 +22,4 @@ var minimumDifference = function (nums, k) {
 
 module.exports = minimumDifference;
 
-console.log(minimumDifference([87063,61094,44530,21297,95857,93551,9918]))
+// console.log(minimumDifference([87063,61094,44530,21297,95857,93551,9918]))
